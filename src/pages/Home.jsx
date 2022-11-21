@@ -6,9 +6,8 @@ import ServiceCard from "../components/ServiceCard"
 const Home = () => {
   
   return (
-    <div>
+    <div class="container" style={{"padding-top":"100px"}}>
       <h2>Data services</h2>
-      <small><NavLink href="/addService">Add service</NavLink></small>
       <For each={services()}>
         {(service => <ServiceCard service={service} />)}
       </For>

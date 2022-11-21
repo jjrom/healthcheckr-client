@@ -1,6 +1,6 @@
 const AddService = () => {
   return (
-    <div>
+    <div class="container">
       TODO - add service
     </div>
   )

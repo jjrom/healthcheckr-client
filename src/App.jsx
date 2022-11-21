@@ -15,7 +15,7 @@ createEffect(async () => {
 
 function App() {
   return (
-    <div class="container">
+    <div>
       <Header />
       <Routes>
         <Route element={<Home />} end path='/' />
