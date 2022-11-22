@@ -13,7 +13,6 @@ RUN apk --update --no-cache add curl
 COPY ./package.json /app/
 COPY ./vite.config.js /app/
 COPY ./index.html /app/
-COPY ./.env /app/
 COPY ./src /app/src
 
 CMD [ "npm", "start" ]
