@@ -4,14 +4,13 @@ import Home from "./pages/Home";
 import AddService from "./pages/AddService";
 import { createEffect, createSignal } from "solid-js";
 
-const [services, setServices] = createSignal("")
+const [services, setServices] = createSignal([])
 
 createEffect(async () => {
   const res = await fetch(import.meta.env.VITE_GET_SERVICES_ENDPOINT)
   const json = await res.json()
   setServices(json.services)
 })
-
 
 function App() {
   return (
@@ -25,6 +24,5 @@ function App() {
   );
 }
 
-export {services}
-
+export { services, setServices }
 export default App;

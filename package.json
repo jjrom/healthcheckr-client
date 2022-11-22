@@ -15,8 +15,10 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.2",
+    "date-fns": "^2.29.3",
     "solid-app-router": "^0.4.2",
     "solid-bootstrap": "^1.0.8",
-    "solid-js": "^1.6.2"
+    "solid-js": "^1.6.2",
+    "solid-markdown": "^1.2.0"
   }
 }

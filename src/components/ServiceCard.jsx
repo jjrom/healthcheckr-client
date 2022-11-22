@@ -1,10 +1,22 @@
-import { Col, Row } from 'solid-bootstrap';
+import { createSignal } from "solid-js";
+import { Card, Col, Row } from 'solid-bootstrap';
+import { formatDistanceToNow, parseISO } from 'date-fns';
+import SolidMarkdown from "solid-markdown";
 import styles from './ServiceCard.module.css';
+
+function LastChecked(iso8601) {
+  if ( !iso8601 ) {
+    return <span class="fst-italic"></span>;
+  }
+  const [lastCheckedToNow, setLastCheckedToNow] = createSignal(formatDistanceToNow(parseISO(iso8601)));
+  setInterval(() => setLastCheckedToNow(formatDistanceToNow(parseISO(iso8601))), 30000);
+  return <span class="fst-italic">Last checked : {lastCheckedToNow()}</span>;
+}
 
 const ServiceCard = ({service}) => {
   return (
-    <div class="card mb-3">
-      <div class="card-header">
+    <Card class="mb-3">
+      <Card.Header>
         <Row>
           <Col xs="1">
             <span class={styles.dot} style={{ "background-color" : service.status === 200 ? 'green' : 'red' }}></span>
@@ -15,26 +27,24 @@ const ServiceCard = ({service}) => {
           <Col>
             {service.title}
           </Col>
-          <Col xs="2" class="text-end">
-            <a href={service.url} target="_blank">Link</a>
+          <Col class="text-end">
+            {LastChecked(service.last_checked)}
           </Col>
         </Row>
-      </div>
-      <div class="card-body">
+      </Card.Header>
+      <Card.Body>
       <Row>
           <Col xs="1"></Col>
           <Col xs="1"></Col>
           <Col>
-            <p>
-              <span class="fw-bold">Description:</span> {service.description}
-            </p>
-            <p>
+            <SolidMarkdown children={service.description}></SolidMarkdown>
+            <div>
               <span class="fw-bold">Attributions:</span> {service.attributions}
-            </p>
+            </div>
           </Col>
         </Row>
-      </div>
-    </div>
+      </Card.Body>
+    </Card>
   )
 }
 
