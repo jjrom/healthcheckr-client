@@ -9,6 +9,7 @@ export default defineConfig({
   },
   server: {
     host: "0.0.0.0",
+    base: import.meta.env.VITE_BASE_PATH,
     hmr: {
       clientPort: 5173
     },
