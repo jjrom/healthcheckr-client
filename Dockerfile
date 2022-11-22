@@ -10,9 +10,8 @@ RUN npm install
 RUN apk --update --no-cache add curl
 
 # Copy src and config
-COPY ./package.json /app/
-COPY ./vite.config.js /app/
-COPY ./index.html /app/
+COPY ./vite.config.js /app
+COPY ./index.html /app
 COPY ./config.env /app/.env
 COPY ./src /app/src
 
