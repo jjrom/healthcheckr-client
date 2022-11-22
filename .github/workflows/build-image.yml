@@ -9,9 +9,11 @@ on:
   push:
     paths:
       - 'index.html'
+      - 'config.env'
       - 'vite.config.js'
       - 'package.json'
       - 'Dockerfile'
+      - 'build/**'
       - 'src/**'
       - '.github/workflows/**'
   release:
