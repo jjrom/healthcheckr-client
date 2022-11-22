@@ -1,3 +1,19 @@
+import { Navbar, Container } from 'solid-bootstrap';
+
+const Header = () => {
+  return (
+    <Navbar bg="dark" expand="lg" variant="dark" sticky="top">
+      <Container>
+        <Navbar.Brand href="/">
+          <img alt="" src={import.meta.env.VITE_VENDOR_LOGO_URL} width="50" height="50"/>
+          <span style="padding:0px 10px;">{import.meta.env.VITE_VENDOR_TITLE}</span>
+        </Navbar.Brand>
+      </Container>
+    </Navbar>
+  )
+}
+
+/*
 import { Nav, Navbar, Container } from 'solid-bootstrap';
 
 const Header = () => {
@@ -18,5 +34,6 @@ const Header = () => {
     </Navbar>
   )
 }
+*/
 
 export default Header;
