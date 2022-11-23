@@ -9,7 +9,7 @@ on:
   push:
     paths:
       - 'index.html'
-      - 'config.env'
+      - '.env'
       - 'vite.config.js'
       - 'package.json'
       - 'Dockerfile'
