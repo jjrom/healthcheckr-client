@@ -1,13 +1,17 @@
 import { For } from "solid-js";
-import { services, setServices } from "../App";
 import ServiceCard from "../components/ServiceCard";
 import { Col, Row } from 'solid-bootstrap';
+import { createEffect, createSignal } from "solid-js";
+
+const [services, setServices] = createSignal([])
 
 const refreshServices = async () => {
   const res = await fetch(import.meta.env.VITE_GET_SERVICES_ENDPOINT)
   const json = await res.json()
   setServices(json.services)
 }
+
+createEffect(refreshServices)
 
 const Home = () => {
   
