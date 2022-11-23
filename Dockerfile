@@ -1,4 +1,5 @@
-FROM node:17-alpine
+# Stage 1 - build image
+FROM node:17-alpine AS appbuild
 
 WORKDIR /app
 
@@ -15,4 +16,8 @@ COPY ./index.html /app
 COPY ./config.env /app/.env
 COPY ./src /app/src
 
-CMD ["npm", "start"]
+RUN npm run build
+
+# Stage 2 - run
+FROM nginx
+COPY --from=appbuild /app/dist /usr/share/nginx/html
