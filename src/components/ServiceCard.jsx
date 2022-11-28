@@ -1,5 +1,6 @@
 import { createSignal } from "solid-js";
 import { Card, Col, Row } from 'solid-bootstrap';
+import { A } from '@solidjs/router';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 import SolidMarkdown from "solid-markdown";
 import styles from './ServiceCard.module.css';
@@ -14,6 +15,7 @@ function LastChecked(iso8601) {
 }
 
 const ServiceCard = ({service}) => {
+
   return (
     <Card class="mb-3">
       <Card.Header>
@@ -25,7 +27,7 @@ const ServiceCard = ({service}) => {
             <span>{service.type}</span>
           </Col>
           <Col>
-            {service.title}
+            <nav><A href={"/" + service._id}>{service.title}</A></nav>
           </Col>
           <Col class="text-end">
             {LastChecked(service.last_checked)}

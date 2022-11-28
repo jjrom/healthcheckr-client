@@ -1,0 +1,6 @@
+@import "ol/ol.css";
+
+.map {
+  width: 300px;
+  height:150px;
+}

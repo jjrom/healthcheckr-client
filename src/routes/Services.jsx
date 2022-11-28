@@ -1,19 +1,19 @@
 import { For } from "solid-js";
 import ServiceCard from "../components/ServiceCard";
 import { Col, Row } from 'solid-bootstrap';
-import { createEffect, createSignal } from "solid-js";
+import { onMount, createSignal } from "solid-js";
 
-const [services, setServices] = createSignal([])
+const Services = () => {
 
-const refreshServices = async () => {
-  const res = await fetch(import.meta.env.VITE_GET_SERVICES_ENDPOINT)
-  const json = await res.json()
-  setServices(json.services)
-}
+  const [services, setServices] = createSignal([]);
 
-createEffect(refreshServices)
-
-const Home = () => {
+  const refreshServices = async () => {
+    const res = await fetch(import.meta.env.VITE_GET_SERVICES_ENDPOINT)
+    const json = await res.json()
+    setServices(json.services)
+  }
+  
+  onMount(refreshServices)
   
   return (
     <div class="container" style="padding-top:50px">
@@ -30,4 +30,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default Services;
